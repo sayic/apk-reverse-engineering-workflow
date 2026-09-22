@@ -51,11 +51,11 @@ skills/apk-reverse-engineering/SKILL.md
 
 ## 平台兼容性
 
-| AI 编程工具 | 安装目标参数 | 隔离环境安装检查 | AI 工具内的实际 APK 工作流 |
+| AI 编程工具 | 安装目标参数 | 隔离环境安装检查 |
 | --- | --- | --- | --- |
-| Codex | codex | 使用 Skills CLI 1.7.0，从本地来源按项目复制安装，通过 | 未验证 |
-| Cursor | cursor | 使用 Skills CLI 1.7.0，从本地来源按项目复制安装，通过 | 未验证 |
-| Claude Code | claude-code | 使用 Skills CLI 1.7.0，从本地来源按项目复制安装，通过 | 未验证 |
+| Codex | codex | 使用 Skills CLI 1.7.0，从本地来源按项目复制安装，通过 |
+| Cursor | cursor | 使用 Skills CLI 1.7.0，从本地来源按项目复制安装，通过 |
+| Claude Code | claude-code | 使用 Skills CLI 1.7.0，从本地来源按项目复制安装，通过 |
 
 上述安装检查确认了 Windows 环境中的技能发现、文件复制完整性和内部文档引用。它们不代表已经验证各应用中的自动触发，也不代表实际 APK 处理或 Unity 操作已经跑通。全局安装和符号链接安装模式尚未检查。
 
