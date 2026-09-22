@@ -1,0 +1,63 @@
+# Artifacts, Status, and Delivery Standards
+
+- Scope:
+  - Standardizes results, acceptance, and handover across skills.
+  - Each resource skill supplements these with specific completion criteria.
+- Default validation:
+  - Unless the user explicitly chooses independent validation or skips it, perform validation appropriate to the task once after processing, without repeatedly asking whether to validate.
+  - Follow explicit instructions such as "I will validate it myself", "skip validation", or "do not test"; skip the corresponding checks and mark them unvalidated.
+  - Limit validation to the task scope and necessary dependencies; do not expand to whole-project testing.
+  - Fix discovered issues within the authorized scope and recheck affected parts. Explain any need to expand the change scope.
+  - If validation prerequisites are missing, state completed checks and remaining blockers; do not claim acceptance passed.
+- Validation focus by task:
+  - art extraction, import, and repair: readability, references/dependencies, Shader state, and relevant visuals; dynamic effects require observing the corresponding playback stages.
+  - code recovery: readability, recovery level, indexes, and project entry points. Reading/analysis tasks need not force decompiled projects to compile.
+  - config recovery: export readability, record/field coverage, and whether conversion changed data types or values.
+  - Table mapping and resource migration: targets actually saved, correct scope, complete relationships, and usable target behavior within the task scope.
+  - Queries and convention checks: traceable evidence, matching versions, evidence-supported conclusions, and explicit checked/unchecked scope.
+- Validation boundaries:
+  - Do not change unrelated code, data, global project settings, or upgrade environments merely to complete validation.
+  - SVN commits, remote publishing, and external business writes are not part of default validation.
+  - Builds and runtime table generation require the task itself or existing explicit authorization; state the boundary when not performed.
+  - Record static checks, editor previews, and actual runtime checks separately; they cannot substitute for one another.
+- Delivery summary:
+  - Game, version, goal, and scope processed.
+  - Files actually created or changed and their locations.
+  - Completion, failures, and unfinished work.
+  - Validation performed, results, and unvalidated items.
+  - Blockers and next steps for unfinished work.
+- Task outcomes:
+  - Complete: agreed deliverables are satisfied and applicable default validation passed; explicitly note user-requested validation skips.
+  - Partial: valid results exist, but required work or validation remains.
+  - Failed: processing did not produce the required valid artifacts; record the cause.
+  - Blocked: necessary inputs, dependencies, or external conditions are missing.
+  - Paused or cancelled: record the actual state and retain results and continuation information.
+- Processing and validation status:
+  - Record file generation, format parsing, reference completeness, Unity import, and runtime behavior separately.
+  - Use passed, failed, not performed, and not applicable for validation.
+  - Normal tool exit, a completion log, or file existence alone does not prove completeness or usability.
+  - If the user validates independently, write "Processing complete; validation will be performed by the user", not "Validation passed".
+  - Validation proves only the current scope and conditions, not all projects or runtime environments.
+- Artifact authenticity:
+  - Distinguish raw extraction, decompilation, format conversion, structural stubs, placeholders, and manual repairs.
+  - Do not present added explanations, inferences, or compatibility implementations as original content.
+  - Separate values from field meanings; unknown semantics do not imply parsing failure.
+  - Distinguish confirmed conclusions, inferences, and items requiring confirmation, with supporting evidence.
+- Sources and indexes:
+  - Record game, project version, input source, and input hashes.
+  - Record tool versions, key parameters, and task-record locations.
+  - Map source files/objects to outputs, including containers, object identifiers, and dependencies when needed.
+  - Follow `layout.md` for index paths so actual artifacts can be located.
+  - For existing-artifact changes, record additions, replacements, deletions, and reference adjustments, not just final file counts.
+- Completeness:
+  - Define the scope when using "all" or "complete", such as specified files, built-in package resources, or a particular remote manifest.
+  - Count completed, failed, missing, and unprocessed items separately and state the counting unit.
+  - If the total cannot be established, state the processed count and "overall completeness unknown"; do not infer a completion rate.
+  - Distinguish absent package content, unavailable remote content, parsing failures, and missing dependencies.
+  - Mark known incomplete, placeholder, or unvalidated content in indexes and documentation even if it is in outputs.
+- Report storage and handover:
+  - outputs holds current artifact indexes, usage instructions, and known limitations.
+  - context holds task actions, validation evidence, failure causes, and continuation instructions.
+  - info records APK information; context records artifact/report entry points; docs holds long-term reusable knowledge.
+  - Reference reports by path rather than maintaining duplicate copies.
+  - For incomplete work, identify reusable results, unusable results, and the point to resume.

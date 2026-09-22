@@ -1,0 +1,74 @@
+# Directory Responsibilities and Storage Rules
+
+- Scope:
+  - Defines locations for packages, tools, rules, parsed artifacts, indexes, and task records.
+  - Follow `naming.md` for names and `execution.md` for execution and overwrite behavior.
+  - Register existing directories through indexes; do not move them merely to standardize structure.
+- Repository root:
+  - The root is apkbreakdown. All apkbreak_* management directories are centralized under apkbreak/. Game outputs directories stay at the root and do not need a games parent folder.
+  - Root `README.md` is the team entry point, root `AGENTS.md` is the AI entry point, and `apkbreak/README.md` indexes management content.
+  - `README.md`, `AGENTS.md`, and `SKILL.md` are fixed entry-point filenames; preserve them.
+- apkbreak_rules:
+  - Stores naming, layout, execution, and delivery rules.
+  - Does not store tool logs, results for specific games, or task progress.
+  - Maintain one copy of shared rules; other files reference it.
+- apkbreak_info:
+  - Stores basic game/version information, the technology stack, version evidence, and remote resource information.
+  - Records original package locations and hashes, technology stack, hot-update mechanisms, and resource manifests. Artifact and report locations belong in context; detailed resource indexes accompany outputs.
+  - One CSV per APK: headers in the first row and APK information in the second; do not register artifacts individually.
+  - Store only basic APK information here; processing history, artifact paths, and report locations belong in context.
+- apkbreak_tools:
+  - Stores shared scripts, configuration examples, dependencies, and version documentation.
+  - Each tool documents inputs, outputs, usage, and limitations.
+  - Organize common and game-specific tools separately.
+  - Tools must not depend on temporary directories from a historical task; provide personal installation paths through local configuration.
+  - Cache portable tools at apkbreak/apkbreak_tools/cache/<tool_name>/<version>/<platform>/; use apkbreak/apkbreak_tools/registry.local.json for the local inventory. Neither is committed to version control; share only the empty templates/registry.json. Register existing installations without moving them.
+- apkbreak_skills:
+  - Each skill has its own directory containing `SKILL.md`.
+  - Put supporting documentation, templates, and examples within the skill, using relative links.
+  - Put tools shared by multiple skills in apkbreak_tools; do not duplicate them.
+  - Do not store packages, actual resource artifacts, or task logs here.
+- apkbreak_docs:
+  - Stores team usage guides, project introductions, workflows, terminology, and reusable long-term analysis.
+  - Identify the applicable game and version in game-specific documentation.
+  - Link to artifact reports rather than maintaining duplicate copies.
+- apkbreak_context:
+  - One record directory per independent task, shared by the main workflow and subflows.
+  - Stores task summaries, stage status, tool logs, failure lists, change lists, and continuation instructions.
+  - Reference artifact paths in reports; do not duplicate large artifacts.
+  - Store pre-change backups in a separate location inside the task directory, outside Unity Assets to avoid duplicate imports.
+- apkbreak_apks:
+  - Stores only original APK, XAPK, APKS, and other installation packages and accompanying inputs.
+  - Does not store extraction results, temporary files, or tool outputs.
+  - Register input sources, original filenames, hashes, and versions in info.
+- apkbreak_unpacked:
+  - Under apkbreak/apkbreak_unpacked/, centralizes intermediate artifacts for all tasks.
+  - Keep the game_id_project_version_resource_type_task_time_unpacked naming format; do not recreate task identifiers based on the time files were moved.
+- unpacked task subdirectories:
+  - Store materials from extraction, downloading, decryption, splitting, reassembly, and related stages.
+  - Separate raw materials from work in progress; conversions do not overwrite inputs.
+  - Preserve file layouts and external-data relationships required by subsequent tools; do not break references for categorization.
+  - Separate stages within the same task using internal subdirectories; record stage information in context.
+- outputs:
+  - Located at the apkbreakdown root alongside apkbreak/, not inside apkbreak/ or apkbreak_unpacked/.
+  - Store organized artifacts by art, code, and config.
+  - Include file indexes, usage instructions, and known omissions and limitations.
+  - Preserve internal structures required by Unity, Rider, and other projects.
+  - Prefer a separate location at the project root for reports, indexes, and notes; do not mix them into Unity Assets or actual data rows.
+  - Clearly mark partial artifacts; placement in outputs does not imply completion or usability.
+- External target projects:
+  - The user specifies target locations for resource migration or table mapping; follow the target project's conventions.
+  - Do not require target business projects to move into apkbreakdown or automatically modify source outputs.
+  - Record source-to-target path mappings, actual changes, and rollback locations in context.
+- Paths and indexes:
+  - Repository paths in task records, CSV/JSON, indexes, and commands are relative to apkbreakdown, not apkbreak/. Resolve Markdown links relative to their containing documents.
+  - Package example: apkbreak/apkbreak_apks/sample_game_a_v1.xapk; intermediate example: apkbreak/apkbreak_unpacked/sample_game_a_v1_code_20000101_120000_unpacked; artifact example: sample_game_a_v1_code_outputs.
+  - Identify the project or environment for external paths; do not treat them as fixed paths shared by all members.
+  - Update entry points and references when paths change; retain original historical paths and append change explanations.
+  - Keep durable file indexes alongside outputs. context records artifact/index locations and generation/update history; info records only APK information.
+- Temporary files and local environments:
+  - Put incomplete downloads and conversion temporaries in the task's unpacked directory, separate from final deliverables.
+  - Separate tool caches, virtual environments, and personal settings from shared content; do not commit them to SVN by default.
+  - Follow cleanup rules in `execution.md`; do not delete materials still needed for continuation, tracing, or rollback.
+
+Do not automatically move historical unpacked directories or resource projects. If the user separately authorizes migration, update current indexes and append path mappings beside historical records, retaining the original records and backups.

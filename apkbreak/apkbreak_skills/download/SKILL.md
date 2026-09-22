@@ -1,0 +1,57 @@
+---
+name: download
+description: "The user explicitly requests remote resources for a particular game version or resources absent from the installation package."
+---
+
+# Download and Organize Remote Resources
+
+Before execution, read the [naming rules](../../apkbreak_rules/naming.md), [layout rules](../../apkbreak_rules/layout.md), [execution rules](../../apkbreak_rules/execution.md), and [delivery rules](../../apkbreak_rules/delivery.md). The user's explicit instructions take precedence over default conventions.
+
+When calling another skill, read its entry point through the [skill index](../../apkbreak_docs/skills.md). The main workflow and subflows share one task record. Use the [record templates](../../apkbreak_context/README.md), and confirm available tools through the [tool inventory](../../apkbreak_tools/README.md).
+
+- Path base: the repository root is apkbreakdown; management directories are under apkbreak/, intermediates under apkbreak/apkbreak_unpacked/, and outputs remain at the repository root. Recorded paths are relative to the repository root.
+
+- Use case: the user explicitly requests downloading remote resources for a game version or filling gaps in package-provided resources.
+- Required inputs:
+  - Game and project version.
+  - Download scope: art, code, config; multiple types, all, or specified resources are supported.
+  - Remote addresses and manifests for the matching version, obtainable from info.
+  - Target Unity project directory if art import is needed.
+- Outputs:
+  - Snapshot of the resource manifest used.
+  - Downloaded files and unpacked artifacts.
+  - Corresponding resource-type outputs.
+  - Download inventories, failure/missing-content reports, and updated info/context.
+- Boundaries:
+  - Execute an explicit download request within scope without repeated confirmation; do not expand versions or scope on your own.
+  - Do not assume current remote responses belong to the requested version.
+  - Do not mix resource manifests/files from different versions.
+  - Record download, extraction, and conversion separately; download success does not imply usable resources.
+- Steps:
+  1. Read info and historical records to confirm addresses, manifests, and version evidence. Save a manifest snapshot. If version correspondence is uncertain, explain and do not attribute it to the requested version.
+  2. Build an inventory of scoped resources and required dependencies, recording logical paths, identifiers, sources, expected sizes, and available hashes. Summarize file count, expected transfer size, and reusable local files; state unknown when sizes are unavailable.
+  3. Reuse confirmed matching local files. Bound concurrency/retries; resume transfers where supported, otherwise redownload only incomplete files. Separate partial and complete files; presence alone is insufficient. Prefer existing applicable tools.
+  4. Check sizes, hashes, or other manifest checksums and confirm responses are not error pages or invalid content. State verification limits when evidence is insufficient. Distinguish download failure, manifest-listed but unavailable remote resources, and content mismatches.
+  5. Identify compression, encryption, and container formats and use suitable tools/shared steps, saving to unpacked. Call the art, code, and config conversion skills by type; do not reenter the APK extraction skill.
+  6. Update context for download, extraction, and conversion stages. At finish, put APK-related resource addresses, manifest versions, and snapshot paths in info and artifact/index/report locations in context. Conversion skills share this task record.
+- Large manifests and continuation:
+  - Freeze Catalog/Manifest, offset-table, and index snapshots with times/hashes. If manifests change, reassess versions/checksums rather than reusing old file sets or CRCs.
+  - Index logical-resource-to-physical-file and dependency relationships for filtering and deduplicating downloads; retain multiple logical paths for one entity. Reuse container dependency results instead of repeatedly traversing all Bundles.
+  - Distinguish package entities, cached files, pending downloads, and missing files. Apply identical size/CRC/hash checks to cached and new files. Successful responses are not necessarily valid files; parsing and transfer validation are separate.
+  - Establish endpoint attempt order, concurrency, retry counts, and stop conditions. Record missing checksum evidence without fabricating hashes.
+  - Save stage progress for parsing, downloading, entity checks, and conversion. On timeout, check whether tools still run before resuming. Align validated/failed/missing/unprocessed counts by unique physical files, not logical entries.
+- Registered tools:
+  - Use [download_bundles](../../apkbreak_tools/games/sample_game_a/download_bundles.md) for Sample Game A gameres manifests, explicitly passing package name, platform, CDN, and manifest; do not reuse old project defaults.
+  - Plans are generated by default. If downloads are authorized, use --execute without requesting authorization again. Separate report directories by execution and read per-file events for continuation.
+  - Current tooling revalidates/reuses completed files but does not support HTTP Range resume. Report limit-based skips, failed checks, and name conflicts; conflicts are not overwritten.
+- Completion criteria:
+  - Specified resources and required dependencies have been processed against the inventory, with download/conversion outcomes recorded separately.
+  - Successful artifacts, failures, omissions, uncertain versions, and unchecked items are registered.
+  - If only downloads are complete, state "Download complete; conversion incomplete".
+  - Mark unmet scope partial.
+- Exceptions:
+  - Invalid addresses or insufficient access: record causes without unlimited retries.
+  - Manifest changes mid-task: retain old snapshots and document differences; do not silently merge manifests.
+  - Checksum mismatch: isolate files and retry a bounded number of times; do not pass persistent failures to conversion.
+  - Individual failures: continue independent resources.
+  - Follow apkbreak_rules for interruptions, duplicate names, and overwrites.
