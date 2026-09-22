@@ -1,6 +1,6 @@
 # Workflow Index
 
-Install or invoke the single [apk-reverse-engineering skill](../../SKILL.md). The following documents are its internal workflows; do not install them separately.
+Install or invoke the single [game-apk-reverse-engineering skill](../../SKILL.md). The following documents are its internal workflows; do not install them separately.
 
 - [Extract resources from an APK](../workflows/extract.md)
 - [Convert unpacked art and import into Unity](../workflows/art.md)
@@ -17,6 +17,6 @@ Install or invoke the single [apk-reverse-engineering skill](../../SKILL.md). Th
 
 Example request:
 
-> Use apk-reverse-engineering to extract code and config from the package I provide. Use my selected task workspace, reuse matching existing results, and record recovery limitations.
+> Use game-apk-reverse-engineering to extract code and config from the package I provide. Use my selected task workspace, reuse matching existing results, and record recovery limitations.
 
 Supply the actual package path and workspace. If the version cannot be established from evidence, ask instead of guessing. If continuing a task, provide its existing context directory. All called workflows share one task record.

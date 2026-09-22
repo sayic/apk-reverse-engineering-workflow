@@ -13,20 +13,20 @@ Prerequisites: Node.js with npm/npx, Git available on PATH, and a supported codi
 Run from the project where you want the skill available:
 
 ```bash
-npx skills add sayic/game-apk-reverse-engineering --skill apk-reverse-engineering --copy
+npx skills add sayic/game-apk-reverse-engineering --skill game-apk-reverse-engineering --copy
 ```
 
 Follow the installer prompts when shown. To select an agent explicitly:
 
 ```bash
 # Codex
-npx skills add sayic/game-apk-reverse-engineering --skill apk-reverse-engineering --agent codex --copy
+npx skills add sayic/game-apk-reverse-engineering --skill game-apk-reverse-engineering --agent codex --copy
 
 # Cursor
-npx skills add sayic/game-apk-reverse-engineering --skill apk-reverse-engineering --agent cursor --copy
+npx skills add sayic/game-apk-reverse-engineering --skill game-apk-reverse-engineering --agent cursor --copy
 
 # Claude Code
-npx skills add sayic/game-apk-reverse-engineering --skill apk-reverse-engineering --agent claude-code --copy
+npx skills add sayic/game-apk-reverse-engineering --skill game-apk-reverse-engineering --agent claude-code --copy
 ```
 
 These commands use project-level installation. Add --global if you intentionally want a user-wide installation. --copy keeps the references with the installed skill without requiring symbolic links. You do not need to publish this repository as an npm package: npx runs the [Skills CLI](https://github.com/vercel-labs/skills), which installs the skill from GitHub.
@@ -63,11 +63,11 @@ See the installer's [supported agents](https://github.com/vercel-labs/skills#sup
 
 Open your project in the coding agent, then provide the package or existing artifacts, a task workspace, and the scope. For example:
 
-> Use apk-reverse-engineering to analyze the package at the path I provide. Extract code and config into my selected task workspace, reuse matching existing results, and report recovery limitations. Do not download remote resources.
+> Use game-apk-reverse-engineering to analyze the package at the path I provide. Extract code and config into my selected task workspace, reuse matching existing results, and report recovery limitations. Do not download remote resources.
 
 For a query on existing results:
 
-> Use apk-reverse-engineering to locate the configuration and code responsible for this behavior in my existing outputs. Keep the analysis read-only.
+> Use game-apk-reverse-engineering to locate the configuration and code responsible for this behavior in my existing outputs. Keep the analysis read-only.
 
 The entry skill selects the appropriate workflow and reads its supporting references as needed. For Unity import or repairs, also provide the target Unity project and configure a working Unity Editor/MCP connection.
 

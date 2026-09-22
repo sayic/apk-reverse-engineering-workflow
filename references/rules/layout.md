@@ -5,7 +5,7 @@ Two locations serve different purposes. Never write task data into an installed 
 ## Installed skill: read-only instructions
 
 ```text
-apk-reverse-engineering/
+game-apk-reverse-engineering/
 ├─ SKILL.md
 └─ references/
    ├─ workflows/

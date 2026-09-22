@@ -1,9 +1,9 @@
 ---
-name: apk-reverse-engineering
+name: game-apk-reverse-engineering
 description: Coordinate APK, XAPK, and APKS resource extraction, code recovery, data-table analysis, and Unity asset workflows. Use for package analysis or work on its extracted artifacts; supports scoped downloads, mapping, repairs, and resumable task records.
 ---
 
-# APK Reverse Engineering
+# Game APK Reverse Engineering
 
 Use one workflow at a time to handle the user's request. The twelve workflow documents are internal procedures of this skill, not separately installed skills.
 

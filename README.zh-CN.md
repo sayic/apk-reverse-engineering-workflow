@@ -13,20 +13,20 @@
 在需要使用该技能的项目目录中运行：
 
 ```bash
-npx skills add sayic/game-apk-reverse-engineering --skill apk-reverse-engineering --copy
+npx skills add sayic/game-apk-reverse-engineering --skill game-apk-reverse-engineering --copy
 ```
 
 出现安装提示时，按提示操作。也可以明确指定安装到哪个 AI 工具：
 
 ```bash
 # Codex
-npx skills add sayic/game-apk-reverse-engineering --skill apk-reverse-engineering --agent codex --copy
+npx skills add sayic/game-apk-reverse-engineering --skill game-apk-reverse-engineering --agent codex --copy
 
 # Cursor
-npx skills add sayic/game-apk-reverse-engineering --skill apk-reverse-engineering --agent cursor --copy
+npx skills add sayic/game-apk-reverse-engineering --skill game-apk-reverse-engineering --agent cursor --copy
 
 # Claude Code
-npx skills add sayic/game-apk-reverse-engineering --skill apk-reverse-engineering --agent claude-code --copy
+npx skills add sayic/game-apk-reverse-engineering --skill game-apk-reverse-engineering --agent claude-code --copy
 ```
 
 以上命令安装到当前项目。如果希望在当前用户的多个项目中使用，可以主动添加 `--global`。`--copy` 会将配套文档一并复制到技能目录，不依赖符号链接。
@@ -67,11 +67,11 @@ SKILL.md
 
 在 AI 编程工具中打开项目，提供安装包或已有分析产物、任务工作目录和处理范围。例如：
 
-> 使用 apk-reverse-engineering 分析我提供路径下的安装包。将 code 和 config 提取到我指定的任务工作目录，复用已有且匹配的结果，并说明还原限制。不要下载远程资源。
+> 使用 game-apk-reverse-engineering 分析我提供路径下的安装包。将 code 和 config 提取到我指定的任务工作目录，复用已有且匹配的结果，并说明还原限制。不要下载远程资源。
 
 查询已有结果时，可以这样说：
 
-> 使用 apk-reverse-engineering，在我已有的 outputs 中查找与这个行为有关的配置和代码。只读分析，不修改文件。
+> 使用 game-apk-reverse-engineering，在我已有的 outputs 中查找与这个行为有关的配置和代码。只读分析，不修改文件。
 
 总入口会选择合适的工作流程，并按需读取配套说明。进行 Unity 资源导入或修复时，还需要提供目标 Unity 工程，并配置可用的 Unity Editor/MCP 连接。
 
