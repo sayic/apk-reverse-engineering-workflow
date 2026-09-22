@@ -52,7 +52,7 @@ skills/apk-reverse-engineering/SKILL.md
 ## 平台兼容性
 
 | AI 编程工具 | 安装目标参数 | 隔离环境安装检查 |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | Codex | codex | 使用 Skills CLI 1.7.0，从本地来源按项目复制安装，通过 |
 | Cursor | cursor | 使用 Skills CLI 1.7.0，从本地来源按项目复制安装，通过 |
 | Claude Code | claude-code | 使用 Skills CLI 1.7.0，从本地来源按项目复制安装，通过 |
