@@ -1,4 +1,4 @@
-# APK Reverse Engineering Workflow
+# Game APK Reverse Engineering
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
@@ -13,20 +13,20 @@ Prerequisites: Node.js with npm/npx, Git available on PATH, and a supported codi
 Run from the project where you want the skill available:
 
 ```bash
-npx skills add sayic/apk-reverse-engineering-workflow --skill apk-reverse-engineering --copy
+npx skills add sayic/game-apk-reverse-engineering --skill apk-reverse-engineering --copy
 ```
 
 Follow the installer prompts when shown. To select an agent explicitly:
 
 ```bash
 # Codex
-npx skills add sayic/apk-reverse-engineering-workflow --skill apk-reverse-engineering --agent codex --copy
+npx skills add sayic/game-apk-reverse-engineering --skill apk-reverse-engineering --agent codex --copy
 
 # Cursor
-npx skills add sayic/apk-reverse-engineering-workflow --skill apk-reverse-engineering --agent cursor --copy
+npx skills add sayic/game-apk-reverse-engineering --skill apk-reverse-engineering --agent cursor --copy
 
 # Claude Code
-npx skills add sayic/apk-reverse-engineering-workflow --skill apk-reverse-engineering --agent claude-code --copy
+npx skills add sayic/game-apk-reverse-engineering --skill apk-reverse-engineering --agent claude-code --copy
 ```
 
 These commands use project-level installation. Add --global if you intentionally want a user-wide installation. --copy keeps the references with the installed skill without requiring symbolic links. You do not need to publish this repository as an npm package: npx runs the [Skills CLI](https://github.com/vercel-labs/skills), which installs the skill from GitHub.
@@ -34,7 +34,7 @@ These commands use project-level installation. Add --global if you intentionally
 To inspect discoverable skills without installing:
 
 ```bash
-npx skills add sayic/apk-reverse-engineering-workflow --list
+npx skills add sayic/game-apk-reverse-engineering --list
 ```
 
 ### Download instead
@@ -91,7 +91,7 @@ The entry skill selects the appropriate workflow and reads its supporting refere
 ## Package and workspace
 
 ```text
-apk-reverse-engineering-workflow/
+game-apk-reverse-engineering/
 ├─ README.md
 ├─ README.zh-CN.md
 ├─ SKILL.md

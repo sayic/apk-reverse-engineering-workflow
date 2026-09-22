@@ -1,4 +1,4 @@
-# APK 逆向分析工作流
+# 游戏 APK 逆向分析
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
@@ -13,20 +13,20 @@
 在需要使用该技能的项目目录中运行：
 
 ```bash
-npx skills add sayic/apk-reverse-engineering-workflow --skill apk-reverse-engineering --copy
+npx skills add sayic/game-apk-reverse-engineering --skill apk-reverse-engineering --copy
 ```
 
 出现安装提示时，按提示操作。也可以明确指定安装到哪个 AI 工具：
 
 ```bash
 # Codex
-npx skills add sayic/apk-reverse-engineering-workflow --skill apk-reverse-engineering --agent codex --copy
+npx skills add sayic/game-apk-reverse-engineering --skill apk-reverse-engineering --agent codex --copy
 
 # Cursor
-npx skills add sayic/apk-reverse-engineering-workflow --skill apk-reverse-engineering --agent cursor --copy
+npx skills add sayic/game-apk-reverse-engineering --skill apk-reverse-engineering --agent cursor --copy
 
 # Claude Code
-npx skills add sayic/apk-reverse-engineering-workflow --skill apk-reverse-engineering --agent claude-code --copy
+npx skills add sayic/game-apk-reverse-engineering --skill apk-reverse-engineering --agent claude-code --copy
 ```
 
 以上命令安装到当前项目。如果希望在当前用户的多个项目中使用，可以主动添加 `--global`。`--copy` 会将配套文档一并复制到技能目录，不依赖符号链接。
@@ -36,7 +36,7 @@ npx skills add sayic/apk-reverse-engineering-workflow --skill apk-reverse-engine
 只查看可以发现的技能，不执行安装：
 
 ```bash
-npx skills add sayic/apk-reverse-engineering-workflow --list
+npx skills add sayic/game-apk-reverse-engineering --list
 ```
 
 ### 直接下载使用
@@ -95,7 +95,7 @@ SKILL.md
 ## 技能包与任务工作目录
 
 ```text
-apk-reverse-engineering-workflow/
+game-apk-reverse-engineering/
 ├─ README.md
 ├─ README.zh-CN.md
 ├─ SKILL.md
