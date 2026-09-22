@@ -49,11 +49,11 @@ Keep the complete skill folder, including references/. This manual workflow does
 
 ## Platform compatibility
 
-| Coding agent | Installer target | Isolated installation check | Actual agent/APK workflow |
-| --- | --- | --- | --- |
-| Codex | codex | Passed with Skills CLI 1.7.0, local source, project copy mode | Not validated |
-| Cursor | cursor | Passed with Skills CLI 1.7.0, local source, project copy mode | Not validated |
-| Claude Code | claude-code | Passed with Skills CLI 1.7.0, local source, project copy mode | Not validated |
+| Coding agent | Installer target | Isolated installation check |
+| --- | --- | --- |
+| Codex | codex | Passed with Skills CLI 1.7.0, local source, project copy mode |
+| Cursor | cursor | Passed with Skills CLI 1.7.0, local source, project copy mode |
+| Claude Code | claude-code | Passed with Skills CLI 1.7.0, local source, project copy mode |
 
 The installation checks confirm skill discovery, copied package contents, and internal document references on Windows. They do not establish automatic activation or successful APK/Unity processing inside each application. Global and symbolic-link installation modes have not been checked. These are coding-agent integrations, not a claim that ordinary web chat interfaces can run the workflow.
 
