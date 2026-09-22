@@ -44,18 +44,18 @@ npx skills add sayic/apk-reverse-engineering-workflow --list
 在 GitHub 点击 **Code → Download ZIP**，解压后，让 AI 编程工具读取：
 
 ```text
-skills/apk-reverse-engineering/SKILL.md
+SKILL.md
 ```
 
 保留完整技能文件夹，包括 `references/`。这种手动使用方式不会自动把技能注册到 AI 工具中。
 
 ## 平台兼容性
 
-| AI 编程工具 | 安装目标参数 | 隔离环境安装检查 |
-| --- | --- | --- |
-| Codex | codex | 使用 Skills CLI 1.7.0，从本地来源按项目复制安装，通过 |
-| Cursor | cursor | 使用 Skills CLI 1.7.0，从本地来源按项目复制安装，通过 |
-| Claude Code | claude-code | 使用 Skills CLI 1.7.0，从本地来源按项目复制安装，通过 |
+| AI 编程工具 | 安装目标参数 | 隔离环境安装检查 | AI 工具内的实际 APK 工作流 |
+| --- | --- | --- | --- |
+| Codex | codex | 使用 Skills CLI 1.7.0，从本地来源按项目复制安装，通过 | 未验证 |
+| Cursor | cursor | 使用 Skills CLI 1.7.0，从本地来源按项目复制安装，通过 | 未验证 |
+| Claude Code | claude-code | 使用 Skills CLI 1.7.0，从本地来源按项目复制安装，通过 | 未验证 |
 
 上述安装检查确认了 Windows 环境中的技能发现、文件复制完整性和内部文档引用。它们不代表已经验证各应用中的自动触发，也不代表实际 APK 处理或 Unity 操作已经跑通。全局安装和符号链接安装模式尚未检查。
 
@@ -79,41 +79,40 @@ skills/apk-reverse-engineering/SKILL.md
 
 | 工作流程 | 用途 |
 | --- | --- |
-| [extract](skills/apk-reverse-engineering/references/workflows/extract.md) | 统筹从指定安装包中提取所选类型的资源 |
-| [container](skills/apk-reverse-engineering/references/workflows/container.md) | 解析资源容器、内部对象、偏移和依赖关系 |
-| [art](skills/apk-reverse-engineering/references/workflows/art.md) | 转换已提取的美术资源，并导入用户提供的 Unity 工程 |
-| [code](skills/apk-reverse-engineering/references/workflows/code.md) | 还原可阅读代码，并说明还原程度与限制 |
-| [config](skills/apk-reverse-engineering/references/workflows/config.md) | 还原数据表，导出 Excel 或结构化数据 |
-| [download](skills/apk-reverse-engineering/references/workflows/download.md) | 下载用户明确要求且版本匹配的远程资源 |
-| [mapping](skills/apk-reverse-engineering/references/workflows/mapping.md) | 将来源数据映射并写入指定目标表 |
-| [import](skills/apk-reverse-engineering/references/workflows/import.md) | 将已解析的美术资源及依赖复制到其他 Unity 工程 |
-| [repair](skills/apk-reverse-engineering/references/workflows/repair.md) | 修复指定的材质、贴图、Shader 或特效问题 |
-| [query](skills/apk-reverse-engineering/references/workflows/query.md) | 在已有 outputs 中追踪数值、逻辑和资源 |
-| [check](skills/apk-reverse-engineering/references/workflows/check.md) | 检查命名、目录布局和索引是否符合约定 |
-| [context](skills/apk-reverse-engineering/references/workflows/context.md) | 记录任务事实、进度、失败原因和接续位置 |
+| [extract](references/workflows/extract.md) | 统筹从指定安装包中提取所选类型的资源 |
+| [container](references/workflows/container.md) | 解析资源容器、内部对象、偏移和依赖关系 |
+| [art](references/workflows/art.md) | 转换已提取的美术资源，并导入用户提供的 Unity 工程 |
+| [code](references/workflows/code.md) | 还原可阅读代码，并说明还原程度与限制 |
+| [config](references/workflows/config.md) | 还原数据表，导出 Excel 或结构化数据 |
+| [download](references/workflows/download.md) | 下载用户明确要求且版本匹配的远程资源 |
+| [mapping](references/workflows/mapping.md) | 将来源数据映射并写入指定目标表 |
+| [import](references/workflows/import.md) | 将已解析的美术资源及依赖复制到其他 Unity 工程 |
+| [repair](references/workflows/repair.md) | 修复指定的材质、贴图、Shader 或特效问题 |
+| [query](references/workflows/query.md) | 在已有 outputs 中追踪数值、逻辑和资源 |
+| [check](references/workflows/check.md) | 检查命名、目录布局和索引是否符合约定 |
+| [context](references/workflows/context.md) | 记录任务事实、进度、失败原因和接续位置 |
 
 ## 技能包与任务工作目录
 
 ```text
 apk-reverse-engineering-workflow/
 ├─ README.md
+├─ README.zh-CN.md
+├─ SKILL.md
 ├─ .gitignore
-└─ skills/
-   └─ apk-reverse-engineering/
-      ├─ SKILL.md
-      └─ references/
-         ├─ workflows/     # 12 个工作流程
-         ├─ rules/         # 共享规则
-         ├─ docs/          # 使用指南与记录说明
-         ├─ tools/         # 工具用法说明
-         └─ templates/     # 空模板
+└─ references/
+   ├─ workflows/
+   ├─ rules/
+   ├─ docs/
+   ├─ tools/
+   └─ templates/
 ```
 
 所需的操作说明和空模板全部保存在技能包内。12 个工作流程属于配套文档，不需要分别安装。只维护这一套技能包，不再额外保留顶层的 `apkbreak/` 工作区。
 
 已安装的技能包保持只读。原始安装包、中间数据、任务记录、工具缓存和处理结果，都保存在**用户指定的任务工作目录**中，不写入技能安装目录。
 
-已有工作目录可以通过明确的路径映射继续使用。详见 [工作目录规则](skills/apk-reverse-engineering/references/rules/layout.md) 和 [任务记录说明](skills/apk-reverse-engineering/references/docs/task-records.md)。
+已有工作目录可以通过明确的路径映射继续使用。详见 [工作目录规则](references/rules/layout.md) 和 [任务记录说明](references/docs/task-records.md)。
 
 ## 外部工具与限制
 
@@ -121,4 +120,4 @@ apk-reverse-engineering-workflow/
 
 适用的外部工具需要另行安装和配置。包含 `<configured-tool-directory>` 的命令是接口使用示例，不是随包提供、可以直接运行的程序。执行前，AI 工具需要确认真实工具实现、版本、依赖和格式兼容性。
 
-安装技能不代表一定能够完整恢复源码、还原 Unity 显示效果，或兼容所有安装包。文件生成、格式解析、引用关系、编辑器导入和运行验证需要分别记录。详见 [工具说明](skills/apk-reverse-engineering/references/tools/README.md)。
+安装技能不代表一定能够完整恢复源码、还原 Unity 显示效果，或兼容所有安装包。文件生成、格式解析、引用关系、编辑器导入和运行验证需要分别记录。详见 [工具说明](references/tools/README.md)。

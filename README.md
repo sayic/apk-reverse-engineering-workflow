@@ -42,18 +42,18 @@ npx skills add sayic/apk-reverse-engineering-workflow --list
 Download the repository using GitHub's **Code → Download ZIP**, extract it, and ask your coding agent to read:
 
 ```text
-skills/apk-reverse-engineering/SKILL.md
+SKILL.md
 ```
 
 Keep the complete skill folder, including references/. This manual workflow does not automatically register a skill with the agent.
 
 ## Platform compatibility
 
-| Coding agent | Installer target | Isolated installation check |
-| --- | --- | --- |
-| Codex | codex | Passed with Skills CLI 1.7.0, local source, project copy mode |
-| Cursor | cursor | Passed with Skills CLI 1.7.0, local source, project copy mode |
-| Claude Code | claude-code | Passed with Skills CLI 1.7.0, local source, project copy mode |
+| Coding agent | Installer target | Isolated installation check | Actual agent/APK workflow |
+| --- | --- | --- | --- |
+| Codex | codex | Passed with Skills CLI 1.7.0, local source, project copy mode | Not validated |
+| Cursor | cursor | Passed with Skills CLI 1.7.0, local source, project copy mode | Not validated |
+| Claude Code | claude-code | Passed with Skills CLI 1.7.0, local source, project copy mode | Not validated |
 
 The installation checks confirm skill discovery, copied package contents, and internal document references on Windows. They do not establish automatic activation or successful APK/Unity processing inside each application. Global and symbolic-link installation modes have not been checked. These are coding-agent integrations, not a claim that ordinary web chat interfaces can run the workflow.
 
@@ -75,39 +75,38 @@ The entry skill selects the appropriate workflow and reads its supporting refere
 
 | Workflow | Purpose |
 | --- | --- |
-| [extract](skills/apk-reverse-engineering/references/workflows/extract.md) | Coordinate extraction of selected resource types from a supplied package |
-| [container](skills/apk-reverse-engineering/references/workflows/container.md) | Parse containers, contained objects, offsets, and dependencies |
-| [art](skills/apk-reverse-engineering/references/workflows/art.md) | Convert unpacked art and import into a provided Unity project |
-| [code](skills/apk-reverse-engineering/references/workflows/code.md) | Recover readable code and identify recovery limits |
-| [config](skills/apk-reverse-engineering/references/workflows/config.md) | Restore tables and export Excel or structured data |
-| [download](skills/apk-reverse-engineering/references/workflows/download.md) | Download explicitly requested remote resources for a matching version |
-| [mapping](skills/apk-reverse-engineering/references/workflows/mapping.md) | Map source data into specified target tables |
-| [import](skills/apk-reverse-engineering/references/workflows/import.md) | Copy parsed art and dependencies into another Unity project |
-| [repair](skills/apk-reverse-engineering/references/workflows/repair.md) | Repair specified material, texture, Shader, or effect problems |
-| [query](skills/apk-reverse-engineering/references/workflows/query.md) | Trace values, logic, and resources in existing outputs |
-| [check](skills/apk-reverse-engineering/references/workflows/check.md) | Check naming, layout, and index conventions |
-| [context](skills/apk-reverse-engineering/references/workflows/context.md) | Record task facts, status, failures, and continuation points |
+| [extract](references/workflows/extract.md) | Coordinate extraction of selected resource types from a supplied package |
+| [container](references/workflows/container.md) | Parse containers, contained objects, offsets, and dependencies |
+| [art](references/workflows/art.md) | Convert unpacked art and import into a provided Unity project |
+| [code](references/workflows/code.md) | Recover readable code and identify recovery limits |
+| [config](references/workflows/config.md) | Restore tables and export Excel or structured data |
+| [download](references/workflows/download.md) | Download explicitly requested remote resources for a matching version |
+| [mapping](references/workflows/mapping.md) | Map source data into specified target tables |
+| [import](references/workflows/import.md) | Copy parsed art and dependencies into another Unity project |
+| [repair](references/workflows/repair.md) | Repair specified material, texture, Shader, or effect problems |
+| [query](references/workflows/query.md) | Trace values, logic, and resources in existing outputs |
+| [check](references/workflows/check.md) | Check naming, layout, and index conventions |
+| [context](references/workflows/context.md) | Record task facts, status, failures, and continuation points |
 
 ## Package and workspace
 
 ```text
 apk-reverse-engineering-workflow/
 ├─ README.md
+├─ README.zh-CN.md
+├─ SKILL.md
 ├─ .gitignore
-└─ skills/
-   └─ apk-reverse-engineering/
-      ├─ SKILL.md
-      └─ references/
-         ├─ workflows/
-         ├─ rules/
-         ├─ docs/
-         ├─ tools/
-         └─ templates/
+└─ references/
+   ├─ workflows/
+   ├─ rules/
+   ├─ docs/
+   ├─ tools/
+   └─ templates/
 ```
 
 All required instruction references and empty templates are inside the skill. The twelve workflows are supporting documents, not twelve independent installs. Maintain this single package; no duplicate top-level apkbreak/ workspace is required.
 
-Keep the installed package read-only. Original packages, intermediate data, task records, tool caches, and outputs belong in a **user-selected task workspace**, not the installation directory. Existing workspace layouts are supported through explicit path mappings. See [workspace rules](skills/apk-reverse-engineering/references/rules/layout.md) and [task records](skills/apk-reverse-engineering/references/docs/task-records.md).
+Keep the installed package read-only. Original packages, intermediate data, task records, tool caches, and outputs belong in a **user-selected task workspace**, not the installation directory. Existing workspace layouts are supported through explicit path mappings. See [workspace rules](references/rules/layout.md) and [task records](references/docs/task-records.md).
 
 ## External tools and limitations
 
@@ -115,4 +114,4 @@ This repository provides instructions, format notes, tool usage documents, and e
 
 Install and configure applicable external tools separately. Commands containing <configured-tool-directory> are interface examples, not ready-to-run bundled programs. The agent must confirm actual implementations, versions, dependencies, and format compatibility before execution.
 
-Installing the skill does not guarantee complete source recovery, working Unity visuals, or compatibility with every package. Record generation, parsing, references, editor import, and runtime validation separately. See [tool documentation](skills/apk-reverse-engineering/references/tools/README.md) for details.
+Installing the skill does not guarantee complete source recovery, working Unity visuals, or compatibility with every package. Record generation, parsing, references, editor import, and runtime validation separately. See [tool documentation](references/tools/README.md) for details.
