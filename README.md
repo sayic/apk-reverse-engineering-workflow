@@ -1,4 +1,6 @@
-# apkbreakdown
+# APK Reverse Engineering Workflow
+
+> For learning and reference purposes only.
 
 Management content is centralized under [apkbreak/](apkbreak/README.md). Game resource projects and outputs remain at the repository root.
 
